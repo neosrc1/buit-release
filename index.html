@@ -1,6 +1,33 @@
 <html>
 <head>
 <style>
+ 
+ /* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+ 
   * {
 
 text-align: center;
@@ -17,11 +44,26 @@ text-align: center;
   width: 100%
 }
 body {
- background-color: #F2F2F2
+ background-color: #0D0D0D
 }
 </style>
 </head>
 <body>
+ 
+ var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
 
 <div class="centerbare">
   <h2>BROKEN UP INTO TEARS</h2>
@@ -31,6 +73,11 @@ body {
   <p>TRIGGER WARNING: This fanfiction covers some sensitive topics (including, but not limited to: kidnapping, murder and trauma), which may unintentionally trigger or potentially scar the reader.
 If you are sensitive to traumatic triggers or similar stimulants, reading this fanfiction is NOT recommended under any circumstance.
 If you still wish to read this fanfiction as part of the aforementioned group, proceed with caution.</p>
+</div>
+ 
+ <button type="button" class="collapsible">Open Collapsible</button>
+<div class="content">
+  <p>Lorem ipsum...</p>
 </div>
 
 </body>
